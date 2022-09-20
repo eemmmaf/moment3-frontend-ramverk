@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope&family=Open+Sans&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: #080a09;
+  margin: 0;
+}
+
+p,
+h2 {
+  color: white;
+}
