@@ -1,38 +1,16 @@
+<!--Komponent för footer-->
 <template>
-    <footer>
-        <div class="footer-container">
-            <p>DT193G - Moment 3 - Frontend-ramverk</p>
-        </div>
+    <footer class="page-footer purple darken-4">
+        <p class="center-align">DT193G - Moment 3 - Frontend-ramverk</p>
     </footer>
 </template>
-
 <script>
 
 </script>
 
 <style scoped>
-
-footer{
-    background-color: #060506;
+footer {
     padding: 0.5rem;
-    margin-top: 3rem;
-}
-
-footer p{
-    font-family: 'Open-sans', sans-serif;
-    font-size: 1.8rem;
-    padding:1rem;
-}
-
-.footer-container {
-    max-width: 1200px;
-    width: 100%;
-    margin: auto;
-}
-
-.footer-container p {
-    color: white;
-    font-size: 1.8rem;
-    text-align: center;
+    margin-top: 4em;
 }
 </style>

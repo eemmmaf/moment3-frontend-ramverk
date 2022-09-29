@@ -1,9 +1,10 @@
+<!--Komponent för artikel. Artikeln har lila bakgrund-->
 <template>
-        <article class="purple darken-4 white-text">
-            <h2 class="center-align">{{title}}</h2>
-            <p>{{content}}</p>
-            <p>{{content2}}</p>
-        </article>
+    <article class="purple darken-4 white-text">
+        <h2 class="center-align">{{title}}</h2>
+        <p>{{content}}</p>
+        <p>{{content2}}</p>
+    </article>
 </template>
 
 <script>
@@ -17,25 +18,23 @@ export default {
 }
 </script>
 
-<style scoped>
 
+<style scoped>
 article {
-    padding: 0.5em;
+    padding: 1em;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-h2{
-    margin-top:0.2em;
+h2 {
+    margin-top: 0.2em;
     font-size: 2.5em;
 }
 
 
 
-@media only screen and (max-width: 800px){
-    article{
+@media only screen and (max-width: 800px) {
+    article {
         margin-top: 3rem;
-        max-width: 800px;
-        width: 100%;
     }
 }
 </style>
