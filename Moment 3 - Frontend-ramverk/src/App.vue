@@ -1,7 +1,6 @@
 <template>
   <Header />
   <main>
-    <Quote />
     <RouterView />
   </main>
   <Footer />
