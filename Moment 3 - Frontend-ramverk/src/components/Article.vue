@@ -1,7 +1,8 @@
 <template>
-        <article>
-            <h2>{{title}}</h2>
+        <article class="purple darken-4 white-text">
+            <h2 class="center-align">{{title}}</h2>
             <p>{{content}}</p>
+            <p>{{content2}}</p>
         </article>
 </template>
 
@@ -10,7 +11,8 @@ export default {
     name: "Article",
     props: {
         title: String,
-        content: String
+        content: String,
+        content2: String
     }
 }
 </script>
@@ -18,21 +20,16 @@ export default {
 <style scoped>
 
 article {
-    background-color: #1b141b;
-    max-width: 550px;
-    width: 100%;
-    padding: 2rem;
+    padding: 0.5em;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-h2 {
-    font-size: 2.6rem;
-    font-family: 'Manrope', sans-serif;
+h2{
+    margin-top:0.2em;
+    font-size: 2.5em;
 }
 
-p {
-    font-size: 1.8rem;
-    font-family: 'Open-sans', sans-serif;
-}
+
 
 @media only screen and (max-width: 800px){
     article{
