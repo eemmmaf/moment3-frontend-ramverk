@@ -1,45 +1,109 @@
 <template>
-    <form @submit.prevent="addPodcast()">
-        <div class="flex-form">
-            <div>
-                <label for="name">Podcastens namn:</label><br>
-                <input v-model="name" type="text" name="name" id="name"><br><br>
+    <div class="row">
+        <form @submit.prevent="addPodcast()">
+            <!--Skriver ut felmeddelande -->
+            <div class="center-align white-text" v-if="error.length">
+                <p>Fyll i följande fel:</p>
+                <ul>
+                    <li v-for="e in error" v-bind:key="e.id">
+                        {{e}}</li>
+                </ul>
             </div>
-            <div>
-                <label for="category">Kategori:</label><br>
-                <input v-model="category" type="text" name="category" id="category"><br><br>
+            <!--Skriver ut att podcasten har lagts till-->
+            <div id="success" class="white-text center-align" v-if="success">
+                <p>{{success}} </p>
             </div>
-        </div>
-        <div class="flex-form">
-            <div>
-                <label for="members">Antal medlemmar</label><br>
-                <input v-model="members" type="number" name="members" id="members"><br><br>
+
+
+            <div class="row">
+                <div class="input-field col s12 m6">
+                    <!--NAMN-->
+                    <label for="name">Podcastens namn:</label><br>
+                    <input v-model="name" type="text" name="name" id="name" class="white-text"><br><br>
+
+                    <!-- Kontroll om felmeddelande -->
+                    <div class="white-text" v-if="nameError">
+                        <span>{{nameError}}</span>
+                    </div>
+                </div>
+
+
+                <!--KATEGORI-->
+                <div class="input-field col s12 m6">
+                    <label for="category">Kategori:</label><br>
+                    <input v-model="category" type="text" name="category" id="category" class="white-text"><br><br>
+
+                    <!-- Kontroll om felmeddelande -->
+                    <div class="white-text" v-if="catError">
+                        <span>{{catError}}</span>
+                    </div>
+                </div>
             </div>
-            <div>
-                <label for="weekly">Släpps veckovis</label><br>
-                <select v-model="weekly" name="weekly" id="weekly">
-                    <option value="1">Ja</option>
-                    <option value="0">Nej</option>
-                </select> <br><br>
+
+
+            <!--Flexcontainer-->
+            <div class="row">
+                <div class="input-field col s12 m6">
+                    <!-- ANTAL MEDLEMMAR -->
+                    <label for="members">Antal medlemmar</label><br>
+                    <input v-model="members" type="number" name="members" id="members" class="white-text"><br><br>
+
+                    <!-- Kontroll om felmeddelande -->
+                    <div class="white-text" v-if="memberError">
+                        <span>{{memberError}}</span>
+                    </div>
+                </div>
+
+
+                <div class="input-field col s12 m6">
+                    <label for="weekly">Släpps veckovis</label><br>
+                    <select v-model="weekly" name="weekly" id="weekly" class="white-text">
+                        <option value="" disabled selected>Ja eller nej</option>
+                        <option value="1">Ja</option>
+                        <option value="0">Nej</option>
+                    </select> <br><br>
+                    <!-- Kontroll om felmeddelande -->
+                    <div class="white-text" v-if="weeklyError">
+                        <span>{{weeklyError}}</span>
+                    </div>
+                </div>
             </div>
-        </div>
-        <input type="submit" value="Lägg till">
-    </form>
+
+
+
+
+            <button class="btn waves-effect waves-light purple darken-4 btn-large" type="submit" name="action">Lägg till
+                <i class="material-icons right">add_circle</i>
+            </button>
+        </form>
+    </div>
 </template>
 
 <script>
+document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, {});
+});  
+
+
 export default {
     data() {
         return {
-            name: "Podcastens namn",
-            category: "Kategori",
-            members: 1,
-            weekly: 1
+            name: "",
+            category: "",
+            members: "",
+            weekly: null,
+            error: [],
+            success: "",
+            nameError: "",
+            catError: "",
+            memberError: "",
+            weeklyError: ""
         }
     },
     methods: {
         async addPodcast() {
-            if (this.name && this.category && this.weekly && this.members != null) {
+            if (this.name && this.category && this.weekly && this.members != null || "") {
                 let favoriteBody = {
                     name: this.name,
                     category: this.category,
@@ -54,7 +118,7 @@ export default {
                     },
                     body: JSON.stringify(favoriteBody)
                 });
-                const data = await resp.json();
+
                 //Tömmer input-fält
                 this.name = "";
                 this.category = "";
@@ -62,109 +126,50 @@ export default {
                 this.weekly = "";
                 //Läser in listan på nytt
                 this.$emit("addedPodcast");
+
+                this.nameError = "";
+                this.catError = "";
+                this.memberError = "";
+                this.weeklyError = "";
+                //Tömmer error-arrayen om allt är ifyllt, ifall något fanns där innan
+                this.error = [];
+                //Lägger till ett meddelande att podcasten lagts till
+                this.success = "Podcasten har lagts till";
+            }
+
+            //Skriver ut felmeddelande om allt inte är ifyllt
+            else {
+                this.nameError = "";
+                this.catError = "";
+                this.memberError = "";
+                this.weeklyError = "";
+                this.error = [];
+                this.success = "";
+                if (!this.name) {
+                    this.error.push("Namn måste fyllas i");
+                    this.nameError = "Fyll i namn";
+                }
+                if (!this.category) {
+                    this.error.push("Kategori måste fyllas i");
+                    this.catError = "Fyll i kategori";
+                }
+                if (!this.members) {
+                    this.error.push("Antal medlemmar måste fyllas i");
+                    this.memberError = "Fyll i antal medlemmar";
+                }
+                if (!this.weekly) {
+                    this.error.push("Fyll i om podcasten släpps varje vecka");
+                    this.weeklyError = "Välj Ja eller Nej";
+                }
             }
         }
-    }
+    },
 }
+
 </script>
 
+
 <style scoped>
-form {
-    max-width: 800px;
-    width: 100%;
-    margin: auto;
-    padding: 1.5rem;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-    border: 1px solid #301b33;
-}
 
-input[type="submit"] {
-    background-color: #ea80fc;
-    max-width: 350px;
-    width: 100%;
-    margin: auto;
-    display: block;
-    padding: 1rem;
-    border: none;
-    border-radius: 7px;
-    font-family: 'Manrope', sans-serif;
-    font-weight: bold;
-    font-size: 1.6rem;
-    cursor: pointer;
-    margin-top: 3rem;
-    margin-bottom: 2rem;
-}
-
-input[type="submit"]:hover {
-    background-color: #9e5ea9;
-}
-
-input[type="text"],
-input[type="number"] {
-    background-color: #332533;
-    max-width: 350px;
-    width: 100%;
-    padding: 1rem 0.5rem;
-    border: 1px solid #8c6c90;
-    color: white;
-    font-family: 'Manrope', sans-serif;
-}
-
-select {
-    background-color: #332533;
-    border: 1px solid #8c6c90;
-    color: white;
-    font-family: 'Manrope', sans-serif;
-    max-width: 350px;
-    width: 100%;
-    padding: 1rem 0.5rem;
-}
-
-label {
-    color: white;
-    font-size: 1.8rem;
-    font-family: 'Manrope', sans-serif;
-}
-
-/* Flex-containern för namn och kategori i formuläret*/
-.flex-form {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 2rem;
-    flex-wrap: wrap;
-}
-
-.flex-form div {
-    max-width: 350px;
-    width: 100%;
-}
-
-@media only screen and (max-width: 731px) {
-
-    .flex-form {
-        justify-content: center;
-        margin-top: 0;
-    }
-
-    .flex-form div {
-        margin: auto;
-        width: 100%;
-    }
-
-    input[type="text"],
-    input[type="number"],
-    select {
-        max-width: 700px;
-        width: 100%;
-    }
-
-    .flex-form div {
-        max-width: 700px;
-        width: 100%;
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-    }
-    
-}
 </style>
     
