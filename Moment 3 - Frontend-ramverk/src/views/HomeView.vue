@@ -13,7 +13,7 @@
             <div class="grid-example col s12 m6">
                 <!--Komponent för artikel-->
                 <Article title="Mitt intresse"
-                    content="Att lyssna på podcast är perfekt att göra under dygnets alla timmar. Jag brukar främst göra det när jag gör olika vardagssysslor, som att laga mat eller diska. Det är även perfekt att lyssna på en podcast under en promenad. Jag tycker om flera olika genrer, men det jag främst lyssnar på är dokumentärer, podcasts med satiriska inslag och skräck." />
+                    content="Att lyssna på podcast är perfekt att göra under dygnets alla timmar. Jag brukar främst göra det när jag gör olika vardagssysslor, som att laga mat eller diska. Det är även perfekt att lyssna på en podcast under en promenad. Jag tycker om flera olika genrer, men det jag främst lyssnar på är dokumentärer, politik och skräck." />
             </div>
         </div>
     </div>
