@@ -45,7 +45,7 @@
                     <p>
                         <label for="weekly">
                             <p>Släpps podcasten veckovis?</p>
-                            <input id="weekly" name="weekly" type="checkbox" v-model="podcast.weekly" />
+                            <input id="weekly" name="weekly" type="checkbox" v-model="weekly" />
                             <span>Ja</span>
                         </label>
                     </p>
@@ -73,7 +73,8 @@ export default {
             success: "",
             nameError: "",
             catError: "",
-            memberError: ""
+            memberError: "",
+            weekly: false
         }
     },
     methods: {
@@ -85,7 +86,7 @@ export default {
                     name: podcast.name,
                     category: podcast.category,
                     members: podcast.members,
-                    weekly: podcast.weekly
+                    weekly: this.weekly
                 };
 
                 //Fetch-anrop med metoden PUT
