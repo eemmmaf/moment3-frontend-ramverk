@@ -10,6 +10,14 @@ https://dt193g-moment3.netlify.app/
 ## Webbapplikationen 
 Detta är en Single-Page-Application(SPA) som är skapad med VUE och CSS-ramverket Materialize. Den innehåller en banner där bildmaterialet har hämtats från Pexels och bildbehandlats med Photopea. 
 
+### Views
+4 olika view har skapats:
+* About.vue - I denna view beskriver jag hur arbetet har gått. Här används de två olika komponenterna för artikel-element.  
+* FavoritesView.vue - Här skrivs table-elementet ut med tabellens header och rubriker och de lagrade Podcasten hämtas. Här finns funktionerna för att hämta podcast, ta bort podcast och hämta enskild utifrån dess id.
+* HomeView.vue - Applikationens startsida. Här importeras bannern och artikel-komponent. 
+* NotFound.vue - Om besökaren skriver fel och får felkoden 404 ska denna sida visas. Det funkar dock inte för tillfället när den är uppladdad med Netlify, då Netlify's egna felkod visas istället. 
+* Update.vue - Denna sida visas när använder trycker på 'uppdatera' i tabellen. Här finns ett formulär där använder kan uppdatera den klickade podcasten. Här finns funktioner för att hämta information om den enskilda podcasten och uppdatera den.
+
 ### Komponenter
 För att dela upp arbetet har komponenter använts. Dessa hittat i src-mappen, i mappen components. De komponenter som skapats är:
 * Addfavorite.vue - Formulär och funktion för att lägga till podcast.
@@ -19,17 +27,6 @@ För att dela upp arbetet har komponenter använts. Dessa hittat i src-mappen, i
 * Footer.vue - Komponent för footer
 * Header.vue - Komponent för header. Här importeras RouterLink från vue-router. Innehåller navigeringen. 
 * WideArticle.vue - Artikel-element med props. 
-
-
-### Views
-4 olika view har skapats:
-* About.vue - I denna view beskriver jag hur arbetet har gått. Här används de två olika komponenterna för artikel-element.  
-* FavoritesView.vue - Här skrivs table-elementet ut med tabellens header och rubriker och de lagrade Podcasten hämtas. Här finns funktionerna för att hämta podcast, ta bort podcast och hämta enskild utifrån dess id.
-* HomeView.vue - Applikationens startsida. Här importeras bannern och artikel-komponent. 
-* NotFound.vue - Om besökaren skriver fel och får felkoden 404 ska denna sida visas. Det funkar dock inte för tillfället när den är uppladdad med Netlify, då Netlify's egna felkod visas istället. 
-* Update.vue - Denna sida visas när använder trycker på 'uppdatera' i tabellen. Här finns ett formulär där använder kan uppdatera den klickade podcasten. Här finns funktioner för att hämta information om den enskilda podcasten och uppdatera den.
-
-## Publicering
-Webbapplikationen har publicerats på Netlify. 
-
+  
+ 
 
