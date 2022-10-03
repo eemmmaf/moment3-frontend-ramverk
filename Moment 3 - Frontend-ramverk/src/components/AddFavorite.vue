@@ -77,13 +77,6 @@
 </template>
 
 <script>
-//JS-kod från Materialize för att hantera selectboxen
-document.addEventListener('DOMContentLoaded', function () {
-    var elems = document.querySelectorAll('select');
-    var instances = M.FormSelect.init(elems, {});
-});
-
-
 export default {
     data() {
         return {
@@ -162,8 +155,9 @@ export default {
                     this.memberError = "Fyll i antal medlemmar";
                 }
             }
+
         }
-    },
+    }
 }
 
 </script>
