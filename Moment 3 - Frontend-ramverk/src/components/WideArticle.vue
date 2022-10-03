@@ -1,6 +1,7 @@
+<!--Komponent för artikel utan bakgrundsfärg. Har en titel och en prop för content-->
 <template>
     <article class="white-text">
-        <h2>{{title}}</h2>
+        <h2 class="center">{{title}}</h2>
         <p>{{content}}</p>
     </article>
 </template>
@@ -16,5 +17,8 @@ export default {
 </script>
 
 <style scoped>
+    article{
+        margin-top:3em;
+    }
 
 </style>
