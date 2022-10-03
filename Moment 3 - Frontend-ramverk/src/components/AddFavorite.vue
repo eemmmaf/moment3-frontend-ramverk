@@ -82,7 +82,7 @@ export default {
         return {
             name: "",
             category: "",
-            members: "",
+            members: null,
             weekly: false,
             error: [],
             success: "",
