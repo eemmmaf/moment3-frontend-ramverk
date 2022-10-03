@@ -10,7 +10,7 @@
 
 <style scoped>
 footer {
-    padding: 0.5rem;
-    margin-top: 4em;
+    padding: 0.5em;
+    margin-top: 10em;
 }
 </style>
