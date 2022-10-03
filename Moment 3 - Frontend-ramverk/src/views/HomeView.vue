@@ -1,5 +1,6 @@
 <!--View för startsidan-->
 <template>
+    <Banner />
     <div class="section">
         <div class="row">
             <!-- En stor kolumn för små skärmar och halv kolumn för medium och uppåt-->
@@ -21,10 +22,12 @@
 <script>
 //Importerar artikel-element-komponenten
 import Article from "../components/Article.vue";
+import Banner from "../components/Banner.vue"
 
 export default {
     components: {
-        Article
+        Article,
+        Banner
     }
 }
 

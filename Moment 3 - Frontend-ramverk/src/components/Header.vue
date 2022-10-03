@@ -31,19 +31,15 @@
                 <router-link to="/om-uppgiften" class="white-text">Om uppgiften</router-link>
             </li>
         </ul>
-        <!--Banner-->
-        <Banner />
     </header>
 
 </template>
 
 <script>
 import { RouterLink } from 'vue-router';
-import Banner from "../components/Banner.vue";
 export default {
     components: {
-        RouterLink,
-        Banner
+        RouterLink
     }
 }
 
