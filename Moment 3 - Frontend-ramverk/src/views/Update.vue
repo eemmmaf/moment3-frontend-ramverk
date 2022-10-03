@@ -1,9 +1,11 @@
 <template>
     <h2 class="white-text">Uppdatera podcast</h2>
-    <!--Skriver ut att podcasten har lagts till-->
+    <!--Skriver ut att podcasten har ändrats-->
     <div id="success" class="white-text center-align" v-if="success">
         <p>{{success}} </p>
     </div>
+
+    <!--Kontroll om en podcast hittas. Skriver ut nedan om det hittas-->
     <div v-if="podcast">
         <form @submit.prevent="updatePodcast(podcast)">
 
@@ -32,8 +34,7 @@
                 <!-- Antal medlemmar -->
                 <div class="input-field col s12 m6">
                     <label for="members">Antal medlemmar</label><br>
-                    <input v-model="podcast.members" type="number" name="members" id="members"
-                        class="white-text"><br><br>
+                    <input v-model="podcast.members" type="number" name="members" id="members" class="white-text"><br><br>
                     <!-- Kontroll om felmeddelande och skriver ut om fel -->
                     <div class="white-text" v-if="memberError">
                         <span>{{memberError}}</span>
@@ -59,6 +60,8 @@
             </button>
         </form>
     </div>
+
+    <!--Om en podcast inte hittas skrivs detta ut istället-->
     <div v-else>
         <p class="white-text center-align">Läser in podcast...</p>
     </div>
@@ -80,7 +83,7 @@ export default {
     methods: {
         //Lägger til podcast
         async updatePodcast(podcast) {
-            if (podcast.name && podcast.category && podcast.members != null || "") {
+            if (podcast.name && podcast.category && podcast.members != "") {
                 let updatedBody = {
                     id: this.id,
                     name: podcast.name,
@@ -132,6 +135,7 @@ export default {
         }
 
     },
+    //Hämtar specifik podcast utifrån dess id
     async mounted() {
         const resp = await fetch("https://warm-chamber-88577.herokuapp.com/api/podcasts/" + this.id);
         const data = await resp.json();
