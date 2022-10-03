@@ -13,7 +13,7 @@
                         class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li>
-                        <router-link to="/mina-favoriter">Mina favoritpodcasts</router-link>
+                        <router-link to="/mina-favoriter">Mina favoriter</router-link>
                     </li>
                     <li>
                         <router-link to="/om-uppgiften">Om uppgiften</router-link>
@@ -21,24 +21,29 @@
                 </ul>
             </div>
         </nav>
+
+        <!--Listan som visas när hamburger-menyn trycks på -->
         <ul class="sidenav purple darken-4" id="mobile-demo">
             <li>
-                <router-link to="/mina-favoriter" class="white-text">Mina favoritpodcasts</router-link>
+                <router-link to="/mina-favoriter" class="white-text">Mina favoriter</router-link>
             </li>
             <li>
                 <router-link to="/om-uppgiften" class="white-text">Om uppgiften</router-link>
             </li>
         </ul>
-        <img src="../assets/microphone.jpg" alt="mikrofon framför svart bakgrund">
+        <!--Banner-->
+        <Banner />
     </header>
 
 </template>
 
 <script>
 import { RouterLink } from 'vue-router';
+import Banner from "../components/Banner.vue";
 export default {
     components: {
-        RouterLink
+        RouterLink,
+        Banner
     }
 }
 
