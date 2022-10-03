@@ -20,6 +20,7 @@ För att dela upp arbetet har komponenter använts. Dessa hittat i src-mappen, i
 * Header.vue - Komponent för header. Här importeras RouterLink från vue-router. Innehåller navigeringen. 
 * WideArticle.vue - Artikel-element med props. 
 
+
 ### Views
 4 olika view har skapats:
 * About.vue - I denna view beskriver jag hur arbetet har gått. Här används de två olika komponenterna för artikel-element.  
